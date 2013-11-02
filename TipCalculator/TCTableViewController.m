@@ -69,6 +69,17 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
                                                             forIndexPath:indexPath];
     
+    if (indexPath.row == 0) {
+        UITextField *billAmountField  = (UITextField *)[cell viewWithTag:104];
+        UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:102];
+        UITextField *totalAmountField = (UITextField *)[cell viewWithTag:103];
+
+        float fBillAmount = (float)[billAmountField.text floatValue];
+        float fTipAmount = fBillAmount * ((float)_tipPercentage / 100);
+        tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
+        totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
+    }
+    
     if (indexPath.row == 1) {
         UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:201];
         tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];

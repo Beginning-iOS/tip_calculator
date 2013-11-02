@@ -56,7 +56,7 @@
 {
     NSString *CellId;
 
-    if (indexPath.row == 1) {
+    if (indexPath.row > 0) {
         CellId = BILL_AMOUNT_CELL_ID;
     }
     else if (indexPath.row == 0) {
@@ -123,12 +123,16 @@
     _tipPercentage = [presetButton.titleLabel.text intValue];
     [(UITableView *)self.view reloadData];
 }
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    [textField resignFirstResponder];
-    return YES;
+- (IBAction)addRowTapped:(id)sender {
+    _billAmountsCount++;
+    int lastRow = [[self tableView] numberOfRowsInSection:0];
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
+                            withRowAnimation:UITableViewRowAnimationTop];
+    
+    [(UITableView *)self.view reloadData];
 }
+
 
 /*
 // Override to support conditional editing of the table view.

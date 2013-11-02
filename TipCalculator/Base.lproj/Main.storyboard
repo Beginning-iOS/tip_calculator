@@ -79,7 +79,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="35" translatesAutoresizingMaskIntoConstraints="NO" id="8op-0l-Fk9">
+                                        <slider opaque="NO" tag="202" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="35" translatesAutoresizingMaskIntoConstraints="NO" id="8op-0l-Fk9">
                                             <rect key="frame" x="18" y="47" width="284" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <connections>
@@ -92,6 +92,9 @@
                                             <state key="normal" title="15">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="presetTap:" destination="xaV-v2-qzG" eventType="touchUpInside" id="Yob-AT-cxg"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzc-Tu-yNX">
                                             <rect key="frame" x="156" y="70" width="46" height="30"/>
@@ -99,6 +102,9 @@
                                             <state key="normal" title="20">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="presetTap:" destination="xaV-v2-qzG" eventType="touchUpInside" id="TrQ-jH-sBQ"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVo-3b-nVA">
                                             <rect key="frame" x="192" y="70" width="46" height="30"/>
@@ -106,6 +112,9 @@
                                             <state key="normal" title="25">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="presetTap:" destination="xaV-v2-qzG" eventType="touchUpInside" id="gwN-zh-cSa"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="201" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d25-la-mUV">
                                             <rect key="frame" x="98" y="18" width="42" height="21"/>

@@ -65,7 +65,6 @@
     }
     else if (indexPath.row == 1) {
         CellId = TIP_PERCENTAGE_CELL_ID;
-        
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
@@ -109,12 +108,20 @@
     return 70.0;
 }
 
+#pragma mark events
+
 - (IBAction)tipSliderValueChanged:(id)sender {
     UISlider *tipPercentageSlider = (UISlider *)sender;
     _tipPercentage = (int)tipPercentageSlider.value;
 
     UITableView *tableView = (UITableView *)self.view;
     [tableView reloadData];
+}
+
+- (IBAction)presetTap:(id)sender {
+    UIButton *presetButton = (UIButton *)sender;
+    _tipPercentage = [presetButton.titleLabel.text intValue];
+    [(UITableView *)self.view reloadData];
 }
 
 

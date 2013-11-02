@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TCTableViewController : UITableViewController <UITextFieldDelegate> {
+    int _billAmountsCount;
     int _tipPercentage;
 }
-
 
 @end

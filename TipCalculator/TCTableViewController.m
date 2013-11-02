@@ -28,14 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     _tipPercentage = 15;
+    // 0th element in array is ignored. table display tipslider
+    _billAmountsCount = 2;
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,7 +49,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return _billAmountsCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -70,13 +66,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
                                                             forIndexPath:indexPath];
     
-    if (indexPath.row == 1) {
+    if (indexPath.row > 0) {
+
         UITextField *billAmountField  = (UITextField *)[cell viewWithTag:BILL_AMOUNT_TAG_NUMBER];
         UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
         UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
 
         float fBillAmount = (float)[billAmountField.text floatValue];
         float fTipAmount = fBillAmount * ((float)_tipPercentage / 100);
+
         tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
         totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     }

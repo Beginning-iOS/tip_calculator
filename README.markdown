@@ -25,10 +25,11 @@ An exercise in learning iOS development
 
 ### Doing
 
-
+- store bill amounts in an array
 
 ### Do
 
+- put tipSlider in it's own section
 
 ### Done
 

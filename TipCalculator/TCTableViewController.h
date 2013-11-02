@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TCTableViewController : UITableViewController
+@interface TCTableViewController : UITableViewController {
+    int _tipPercentage;
+}
+
 
 @end

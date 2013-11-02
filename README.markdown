@@ -19,19 +19,21 @@ An exercise in learning iOS development
 - tip percentage row has:
   - tip slider (5 to 35)
   - label to show current tip percentage
+  - 10,15,20 as preset buttons for slider
 
 ## To Do
 
 ### Doing
 
-- add tip percentage cell 
-  - keep an array of billAmounts
+- trap slider event
+
 
 ### Do
 
 
 ### Done
 
+- add tip percentage cell 
 - add TableView
 - use a TableViewController
 - add a Header

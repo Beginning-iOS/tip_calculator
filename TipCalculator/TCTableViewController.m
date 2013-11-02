@@ -61,10 +61,17 @@
     }
     else if (indexPath.row == 1) {
         CellId = @"TipPercentageCell";
+        
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
                                                             forIndexPath:indexPath];
+    
+    if (indexPath.row == 1) {
+        UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:201];
+        tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];
+    }
+    
     
     return cell;
 }
@@ -72,6 +79,33 @@
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"Tip Calculator";
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 1) {
+        return 100.0;
+    }
+    
+    return 70.0;
+}
+
+- (IBAction)tipSliderValueChanged:(id)sender {
+    UISlider *tipPercentageSlider = (UISlider *)sender;
+    NSLog(@"%d", (int)tipPercentageSlider.value);
+
+    _tipPercentage = (int)tipPercentageSlider.value;
+
+    UITableView *tableView = (UITableView *)self.view;
+    [tableView reloadData];
+
+    /*
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TipPercentageCell"];
+    UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:201];
+    */
+    //tipPercentageLabel.text = [NSString stringWithFormat:@"%f", tipPercentageSlider.value];
+    
+}
+
 
 /*
 // Override to support conditional editing of the table view.

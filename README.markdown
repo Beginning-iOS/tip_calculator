@@ -25,7 +25,6 @@ An exercise in learning iOS development
 
 ### Doing
 
-- trap slider event
 
 
 ### Do
@@ -33,6 +32,7 @@ An exercise in learning iOS development
 
 ### Done
 
+- trap slider event
 - add tip percentage cell 
 - add TableView
 - use a TableViewController

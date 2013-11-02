@@ -49,13 +49,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"BillAmountCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    NSString *CellId;
+
+    if (indexPath.row == 0) {
+        CellId = @"BillAmountCell";
+    }
+    else if (indexPath.row == 1) {
+        CellId = @"TipPercentageCell";
+    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
+                                                            forIndexPath:indexPath];
     
     return cell;
 }

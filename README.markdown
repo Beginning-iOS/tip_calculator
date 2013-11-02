@@ -24,17 +24,18 @@ An exercise in learning iOS development
 
 ### Doing
 
-- add TableView
-- use a TableViewController
-- add a Header
-
+- add tip percentage cell 
+  - keep an array of billAmounts
 
 ### Do
 
-- create cell and class for bill amount row
-- display it
 
 ### Done
 
+- add TableView
+- use a TableViewController
+- add a Header
+- create cell and class for bill amount row
+- display it
 
 

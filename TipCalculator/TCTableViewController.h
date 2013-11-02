@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TCTableViewController : UITableViewController {
+@interface TCTableViewController : UITableViewController <UITextFieldDelegate> {
     int _tipPercentage;
 }
 

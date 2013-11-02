@@ -60,17 +60,17 @@
 {
     NSString *CellId;
 
-    if (indexPath.row == 0) {
+    if (indexPath.row == 1) {
         CellId = BILL_AMOUNT_CELL_ID;
     }
-    else if (indexPath.row == 1) {
+    else if (indexPath.row == 0) {
         CellId = TIP_PERCENTAGE_CELL_ID;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
                                                             forIndexPath:indexPath];
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == 1) {
         UITextField *billAmountField  = (UITextField *)[cell viewWithTag:BILL_AMOUNT_TAG_NUMBER];
         UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
         UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
@@ -81,7 +81,7 @@
         totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     }
     
-    if (indexPath.row == 1) {
+    if (indexPath.row == 0) {
         UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
         UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
         tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];
@@ -103,11 +103,11 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 1) {
-        return 100.0;
+    if (indexPath.row == 0) {
+        return 85.0;
     }
     
-    return 70.0;
+    return 65.0;
 }
 
 #pragma mark events
@@ -126,6 +126,11 @@
     [(UITableView *)self.view reloadData];
 }
 
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 /*
 // Override to support conditional editing of the table view.

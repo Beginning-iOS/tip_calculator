@@ -14,13 +14,13 @@
 		4DDD40881825269C003B7CFE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD40871825269C003B7CFE /* main.m */; };
 		4DDD408C1825269C003B7CFE /* TCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD408B1825269C003B7CFE /* TCAppDelegate.m */; };
 		4DDD408F1825269C003B7CFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD408D1825269C003B7CFE /* Main.storyboard */; };
-		4DDD40921825269C003B7CFE /* TCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD40911825269C003B7CFE /* TCViewController.m */; };
 		4DDD40941825269C003B7CFE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD40931825269C003B7CFE /* Images.xcassets */; };
 		4DDD409B1825269C003B7CFE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD409A1825269C003B7CFE /* XCTest.framework */; };
 		4DDD409C1825269C003B7CFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407B1825269C003B7CFE /* Foundation.framework */; };
 		4DDD409D1825269C003B7CFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407F1825269C003B7CFE /* UIKit.framework */; };
 		4DDD40A51825269C003B7CFE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4DDD40A31825269C003B7CFE /* InfoPlist.strings */; };
 		4DDD40A71825269C003B7CFE /* TipCalculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD40A61825269C003B7CFE /* TipCalculatorTests.m */; };
+		4DDD40B218252959003B7CFE /* TCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DDD40B118252959003B7CFE /* TCTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +45,14 @@
 		4DDD408A1825269C003B7CFE /* TCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCAppDelegate.h; sourceTree = "<group>"; };
 		4DDD408B1825269C003B7CFE /* TCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCAppDelegate.m; sourceTree = "<group>"; };
 		4DDD408E1825269C003B7CFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4DDD40901825269C003B7CFE /* TCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCViewController.h; sourceTree = "<group>"; };
-		4DDD40911825269C003B7CFE /* TCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCViewController.m; sourceTree = "<group>"; };
 		4DDD40931825269C003B7CFE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4DDD40991825269C003B7CFE /* TipCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TipCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDD409A1825269C003B7CFE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		4DDD40A21825269C003B7CFE /* TipCalculatorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TipCalculatorTests-Info.plist"; sourceTree = "<group>"; };
 		4DDD40A41825269C003B7CFE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4DDD40A61825269C003B7CFE /* TipCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipCalculatorTests.m; sourceTree = "<group>"; };
+		4DDD40B018252959003B7CFE /* TCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTableViewController.h; sourceTree = "<group>"; };
+		4DDD40B118252959003B7CFE /* TCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +115,10 @@
 				4DDD408A1825269C003B7CFE /* TCAppDelegate.h */,
 				4DDD408B1825269C003B7CFE /* TCAppDelegate.m */,
 				4DDD408D1825269C003B7CFE /* Main.storyboard */,
-				4DDD40901825269C003B7CFE /* TCViewController.h */,
-				4DDD40911825269C003B7CFE /* TCViewController.m */,
 				4DDD40931825269C003B7CFE /* Images.xcassets */,
 				4DDD40821825269C003B7CFE /* Supporting Files */,
+				4DDD40B018252959003B7CFE /* TCTableViewController.h */,
+				4DDD40B118252959003B7CFE /* TCTableViewController.m */,
 			);
 			path = TipCalculator;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DDD40921825269C003B7CFE /* TCViewController.m in Sources */,
+				4DDD40B218252959003B7CFE /* TCTableViewController.m in Sources */,
 				4DDD40881825269C003B7CFE /* main.m in Sources */,
 				4DDD408C1825269C003B7CFE /* TCAppDelegate.m in Sources */,
 			);

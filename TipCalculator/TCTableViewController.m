@@ -78,6 +78,11 @@
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 95.0;
+}
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"Tip Calculator";
 }
@@ -93,19 +98,10 @@
 
 - (IBAction)tipSliderValueChanged:(id)sender {
     UISlider *tipPercentageSlider = (UISlider *)sender;
-    NSLog(@"%d", (int)tipPercentageSlider.value);
-
     _tipPercentage = (int)tipPercentageSlider.value;
 
     UITableView *tableView = (UITableView *)self.view;
     [tableView reloadData];
-
-    /*
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TipPercentageCell"];
-    UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:201];
-    */
-    //tipPercentageLabel.text = [NSString stringWithFormat:@"%f", tipPercentageSlider.value];
-    
 }
 
 

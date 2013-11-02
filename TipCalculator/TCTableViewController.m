@@ -82,8 +82,10 @@
     }
     
     if (indexPath.row == 1) {
-        UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:201];
+        UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
+        UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
         tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];
+        [tipSlider setValue:(float)_tipPercentage];
     }
     
     

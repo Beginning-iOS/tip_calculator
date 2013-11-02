@@ -53,6 +53,7 @@
 		4DDD40A61825269C003B7CFE /* TipCalculatorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipCalculatorTests.m; sourceTree = "<group>"; };
 		4DDD40B018252959003B7CFE /* TCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCTableViewController.h; sourceTree = "<group>"; };
 		4DDD40B118252959003B7CFE /* TCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCTableViewController.m; sourceTree = "<group>"; };
+		4DDD40B318257851003B7CFE /* constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,13 +113,14 @@
 		4DDD40811825269C003B7CFE /* TipCalculator */ = {
 			isa = PBXGroup;
 			children = (
+				4DDD40B318257851003B7CFE /* constants.h */,
 				4DDD408A1825269C003B7CFE /* TCAppDelegate.h */,
 				4DDD408B1825269C003B7CFE /* TCAppDelegate.m */,
 				4DDD408D1825269C003B7CFE /* Main.storyboard */,
 				4DDD40931825269C003B7CFE /* Images.xcassets */,
-				4DDD40821825269C003B7CFE /* Supporting Files */,
 				4DDD40B018252959003B7CFE /* TCTableViewController.h */,
 				4DDD40B118252959003B7CFE /* TCTableViewController.m */,
+				4DDD40821825269C003B7CFE /* Supporting Files */,
 			);
 			path = TipCalculator;
 			sourceTree = "<group>";

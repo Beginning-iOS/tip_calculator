@@ -7,6 +7,8 @@
 //
 
 #import "TCTableViewController.h"
+#import "constants.h"
+
 
 @interface TCTableViewController ()
 
@@ -59,10 +61,10 @@
     NSString *CellId;
 
     if (indexPath.row == 0) {
-        CellId = @"BillAmountCell";
+        CellId = BILL_AMOUNT_CELL_ID;
     }
     else if (indexPath.row == 1) {
-        CellId = @"TipPercentageCell";
+        CellId = TIP_PERCENTAGE_CELL_ID;
         
     }
     
@@ -70,9 +72,9 @@
                                                             forIndexPath:indexPath];
     
     if (indexPath.row == 0) {
-        UITextField *billAmountField  = (UITextField *)[cell viewWithTag:104];
-        UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:102];
-        UITextField *totalAmountField = (UITextField *)[cell viewWithTag:103];
+        UITextField *billAmountField  = (UITextField *)[cell viewWithTag:BILL_AMOUNT_TAG_NUMBER];
+        UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
+        UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
 
         float fBillAmount = (float)[billAmountField.text floatValue];
         float fTipAmount = fBillAmount * ((float)_tipPercentage / 100);
@@ -95,7 +97,7 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Tip Calculator";
+    return TIP_CALCULATOR_TABLE_HEADING;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

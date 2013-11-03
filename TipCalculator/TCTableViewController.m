@@ -56,6 +56,16 @@
     return _billAmountsCount;
 }
 
+/*
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 20.0;
+    }
+    
+    return 85.0;
+}
+ */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -101,23 +111,26 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 95.0;
+    if (section == 0) {
+        return 25.0;
+    }
+    return 50.0;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Tip Percentage";
+        return nil;
     }
     return TIP_CALCULATOR_TABLE_HEADING;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+ -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return 85.0;
+    if (indexPath.section == 0) {
+        return 90.0;
     }
     
-    return 65.0;
+    return 50.0;
 }
 
 #pragma mark events

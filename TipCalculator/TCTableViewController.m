@@ -132,6 +132,16 @@
     
     [(UITableView *)self.view reloadData];
 }
+- (IBAction)deleteRowTapped:(id)sender {
+    _billAmountsCount--;
+
+    int lastRow = [[self tableView] numberOfRowsInSection:0];
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow-1 inSection:0];
+    [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:ip]
+                            withRowAnimation:UITableViewRowAnimationFade];
+    
+    [(UITableView *)self.view reloadData];
+}
 
 
 /*

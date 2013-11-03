@@ -77,6 +77,12 @@
         billAmountField.text = [NSString stringWithFormat:@"%.2f", fBillAmount];
         tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
         totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
+        
+        if (indexPath.row == 1) {
+            // hide delete button
+            UIButton *deleteButton  = (UIButton *)[cell viewWithTag:DELETE_ROW_TAG_NUMBER];
+            [deleteButton setHidden:YES];
+        }
     }
     else if (indexPath.row == 0) {
         UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];

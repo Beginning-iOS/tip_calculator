@@ -9,7 +9,7 @@
 #ifndef TipCalculator_constants_h
 #define TipCalculator_constants_h
 
-NSString *TIP_CALCULATOR_TABLE_HEADING = @"Tip Calculator";
+NSString *TIP_CALCULATOR_TABLE_HEADING = @"Bill Amounts";
 
 NSString *BILL_AMOUNT_CELL_ID = @"BillAmountCell";
 NSString *TIP_PERCENTAGE_CELL_ID = @"TipPercentageCell";

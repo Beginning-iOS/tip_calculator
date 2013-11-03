@@ -31,7 +31,7 @@
     
     _tipPercentage = 15;
     // 0th element in array is ignored. table display tipslider
-    _billAmountsCount = 2;
+    _billAmountsCount = 1;
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,54 +44,59 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 0) {
+        return 1;
+    }
+    
     return _billAmountsCount;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *CellId;
+    
+    if (indexPath.section == 0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TIP_PERCENTAGE_CELL_ID
+                                                                forIndexPath:indexPath];
+        
+        UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
+        UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
+        tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];
+        [tipSlider setValue:(float)_tipPercentage];
+        return cell;
+    }
 
-    if (indexPath.row > 0) {
-        CellId = BILL_AMOUNT_CELL_ID;
-    }
-    else if (indexPath.row == 0) {
-        CellId = TIP_PERCENTAGE_CELL_ID;
-    }
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellId
-                                                            forIndexPath:indexPath];
-    
-    if (indexPath.row > 0) {
+    if (indexPath.section == 1) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BILL_AMOUNT_CELL_ID
+                                                                forIndexPath:indexPath];
+        
+        
         UITextField *billAmountField  = (UITextField *)[cell viewWithTag:BILL_AMOUNT_TAG_NUMBER];
         UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
         UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
 
-        float fBillAmount = (_totalBillAmount / (_billAmountsCount - 1));
+        float fBillAmount = (_totalBillAmount / (_billAmountsCount));
         float fTipAmount = fBillAmount * ((float)_tipPercentage / 100);
 
         billAmountField.text = [NSString stringWithFormat:@"%.2f", fBillAmount];
         tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
         totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
         
-        if (indexPath.row == 1) {
+        if (indexPath.row == 0) {
             // hide delete button
             UIButton *deleteButton  = (UIButton *)[cell viewWithTag:DELETE_ROW_TAG_NUMBER];
             [deleteButton setHidden:YES];
         }
+        return cell;
     }
-    else if (indexPath.row == 0) {
-        UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
-        UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
-        tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];
-        [tipSlider setValue:(float)_tipPercentage];
-    }
-    
-    return cell;
+
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -100,6 +105,9 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Tip Percentage";
+    }
     return TIP_CALCULATOR_TABLE_HEADING;
 }
 
@@ -145,7 +153,7 @@
 - (IBAction)addRowTapped:(id)sender {
     _billAmountsCount++;
     int lastRow = [[self tableView] numberOfRowsInSection:0];
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:1];
     [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
                             withRowAnimation:UITableViewRowAnimationTop];
     
@@ -156,7 +164,7 @@
     _billAmountsCount--;
 
     int lastRow = [[self tableView] numberOfRowsInSection:0];
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow-1 inSection:0];
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow-1 inSection:1];
     [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:ip]
                             withRowAnimation:UITableViewRowAnimationFade];
     

@@ -28,7 +28,6 @@
 - (void)tearDown
 {
     ctlr = nil;
-
     [super tearDown];
 }
 
@@ -47,13 +46,17 @@
     XCTAssertTrue([ctlr hideDeleteButtonForRow:0]);
 }
 
--(void)test_hideDeleteButtonIsFalseWhenRowIs_GreaterThan0
+-(void)test_hideDeleteButtonIsFalseWhenRowIsGreaterThan_0
 {
     XCTAssertFalse([ctlr hideDeleteButtonForRow:1]);
 }
 
--(void)test_sectionsIsBillSplits {
+-(void)test_sectionsIsBillSplitsIsTrueForSectionIs_1 {
     XCTAssertTrue([ctlr sectionIsBillSplits:1]);
+}
+
+-(void)test_sectionsIsTipPercentageIsTrueForSectionIs_0 {
+    XCTAssertTrue([ctlr sectionIsTipPercentage:0]);
 }
 
 

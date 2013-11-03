@@ -22,5 +22,6 @@
 
 -(bool)hideDeleteButtonForRow:(int)rowNumber;
 -(bool)sectionIsBillSplits:(NSInteger)section;
+-(bool)sectionIsTipPercentage:(NSInteger)section;
 
 @end

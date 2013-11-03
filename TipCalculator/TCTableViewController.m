@@ -47,7 +47,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
+    if ([self sectionIsTipPercentage:section]) {
         return 1;
     }
     
@@ -59,24 +59,30 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.section == 0) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TIP_PERCENTAGE_CELL_ID
-                                                                forIndexPath:indexPath];
-        
-        UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
-        UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
-        tipPercentageLabel.text = [NSString stringWithFormat:@"%d", self._tipPercentage];
-        [tipSlider setValue:(float)self._tipPercentage];
+    if ([self sectionIsTipPercentage:indexPath.section]) {
+        UITableViewCell *cell = [self buildTipPercentageCellForTableView:tableView WithIndexPath:indexPath];
         return cell;
     }
-
-    
-    if ([self sectionIsBillSplits:indexPath.section]) {
+    else if ([self sectionIsBillSplits:indexPath.section]) {
         UITableViewCell *cell = [self buildBillSplitCellForTableView:tableView WithIndexPath:indexPath];
         return cell;
     }
 
     return nil;
+}
+
+-(UITableViewCell *)buildTipPercentageCellForTableView:tableView
+                                         WithIndexPath:indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TIP_PERCENTAGE_CELL_ID
+                                                            forIndexPath:indexPath];
+    
+    UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
+    UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
+    tipPercentageLabel.text = [NSString stringWithFormat:@"%d", self._tipPercentage];
+    [tipSlider setValue:(float)self._tipPercentage];
+
+    return cell;
 }
 
 -(UITableViewCell *)buildBillSplitCellForTableView:tableView
@@ -116,6 +122,11 @@
 
 -(bool)sectionIsBillSplits:(NSInteger)section {
     return (section == 1);
+}
+
+-(bool)sectionIsTipPercentage:(NSInteger)section
+{
+    return (section == 0);
 }
 
 

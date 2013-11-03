@@ -67,16 +67,14 @@
                                                             forIndexPath:indexPath];
     
     if (indexPath.row > 0) {
-
         UITextField *billAmountField  = (UITextField *)[cell viewWithTag:BILL_AMOUNT_TAG_NUMBER];
         UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
         UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
 
-        float fBillAmount = _totalBillAmount;
-        fBillAmount = (float)[billAmountField.text floatValue];
-        _totalBillAmount += fBillAmount;
+        float fBillAmount = (_totalBillAmount / (_billAmountsCount - 1));
         float fTipAmount = fBillAmount * ((float)_tipPercentage / 100);
 
+        billAmountField.text = [NSString stringWithFormat:@"%.2f", fBillAmount];
         tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
         totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     }
@@ -111,7 +109,6 @@
 #pragma mark events
 
 - (IBAction)tipSliderValueChanged:(id)sender {
-    _totalBillAmount = 0.0f;
     UISlider *tipPercentageSlider = (UISlider *)sender;
     _tipPercentage = (int)tipPercentageSlider.value;
 
@@ -120,9 +117,22 @@
 }
 
 - (IBAction)presetTap:(id)sender {
-    _totalBillAmount = 0.0f;
     UIButton *presetButton = (UIButton *)sender;
     _tipPercentage = [presetButton.titleLabel.text intValue];
+    [(UITableView *)self.view reloadData];
+}
+
+- (IBAction)editTotalBillAmountDidEnd:(id)sender {
+    [(UITextField *)sender resignFirstResponder];
+}
+
+- (IBAction)CalculateTipTapped:(id)sender {
+    NSIndexPath *ndxPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:ndxPath];
+
+    UITextField *totalBillAmountField  = (UITextField *)[cell viewWithTag:TOTAL_BILL_TOTAL_TAG_NUMBER];
+    _totalBillAmount = [totalBillAmountField.text floatValue];
+    
     [(UITableView *)self.view reloadData];
 }
 

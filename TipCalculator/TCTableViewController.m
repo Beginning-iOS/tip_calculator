@@ -20,7 +20,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -29,9 +28,8 @@
 {
     [super viewDidLoad];
     
-    _tipPercentage = 15;
-    // 0th element in array is ignored. table display tipslider
-    _billAmountsCount = 1;
+    self._billAmountsCount = 1;
+    self._tipPercentage = 15;
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,19 +51,9 @@
         return 1;
     }
     
-    return _billAmountsCount;
+    return self._billAmountsCount;
 }
 
-/*
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return 20.0;
-    }
-    
-    return 85.0;
-}
- */
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -76,8 +64,8 @@
         
         UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
         UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
-        tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];
-        [tipSlider setValue:(float)_tipPercentage];
+        tipPercentageLabel.text = [NSString stringWithFormat:@"%d", self._tipPercentage];
+        [tipSlider setValue:(float)self._tipPercentage];
         return cell;
     }
 
@@ -91,8 +79,8 @@
         UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
         UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
 
-        float fBillAmount = (_totalBillAmount / (_billAmountsCount));
-        float fTipAmount = fBillAmount * ((float)_tipPercentage / 100);
+        float fBillAmount = (self._totalBillAmount / (self._billAmountsCount));
+        float fTipAmount = fBillAmount * ((float)self._tipPercentage / 100);
 
         billAmountField.text = [NSString stringWithFormat:@"%.2f", fBillAmount];
         tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
@@ -137,7 +125,7 @@
 
 - (IBAction)tipSliderValueChanged:(id)sender {
     UISlider *tipPercentageSlider = (UISlider *)sender;
-    _tipPercentage = (int)tipPercentageSlider.value;
+    self._tipPercentage = (int)tipPercentageSlider.value;
 
     UITableView *tableView = (UITableView *)self.view;
     [tableView reloadData];
@@ -145,7 +133,7 @@
 
 - (IBAction)presetTap:(id)sender {
     UIButton *presetButton = (UIButton *)sender;
-    _tipPercentage = [presetButton.titleLabel.text intValue];
+    self._tipPercentage = [presetButton.titleLabel.text intValue];
     [(UITableView *)self.view reloadData];
 }
 
@@ -158,13 +146,13 @@
     UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:ndxPath];
 
     UITextField *totalBillAmountField  = (UITextField *)[cell viewWithTag:TOTAL_BILL_TOTAL_TAG_NUMBER];
-    _totalBillAmount = [totalBillAmountField.text floatValue];
+    self._totalBillAmount = [totalBillAmountField.text floatValue];
     
     [(UITableView *)self.view reloadData];
 }
 
 - (IBAction)addRowTapped:(id)sender {
-    _billAmountsCount++;
+    self._billAmountsCount++;
     int lastRow = [[self tableView] numberOfRowsInSection:0];
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:1];
     [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
@@ -174,7 +162,7 @@
 }
 
 - (IBAction)deleteRowTapped:(id)sender {
-    _billAmountsCount--;
+    self._billAmountsCount--;
 
     int lastRow = [[self tableView] numberOfRowsInSection:0];
     NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow-1 inSection:1];

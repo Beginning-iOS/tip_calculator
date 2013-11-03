@@ -7,28 +7,39 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "TCTableViewController.h"
 
 @interface TipCalculatorTests : XCTestCase
 
 @end
 
-@implementation TipCalculatorTests
+@implementation TipCalculatorTests {
+    TCTableViewController *ctlr;
+}
 
 - (void)setUp
 {
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
+    ctlr = [[TCTableViewController alloc] initWithNibName:@"TCTableViewController" bundle:nil];
+    [ctlr viewDidLoad];
 }
 
 - (void)tearDown
 {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    ctlr = nil;
+
     [super tearDown];
 }
 
-- (void)testExample
+- (void)test_defaultValueFor_billAmountsCountIs_1
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    XCTAssertEqual(1, ctlr._billAmountsCount);
+}
+
+-(void)test_defaultTipPercentageIs_15
+{
+    XCTAssertEqual(15, ctlr._tipPercentage);
 }
 
 @end

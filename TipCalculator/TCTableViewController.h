@@ -9,9 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface TCTableViewController : UITableViewController <UITextFieldDelegate> {
+    /*
     int _billAmountsCount;
     int _tipPercentage;
     float _totalBillAmount;
+     */
 }
+
+@property (nonatomic) int _billAmountsCount;
+@property (nonatomic) int _tipPercentage;
+@property (nonatomic) float _totalBillAmount;
 
 @end

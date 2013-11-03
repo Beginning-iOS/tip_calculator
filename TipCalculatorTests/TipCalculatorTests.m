@@ -52,4 +52,10 @@
     XCTAssertFalse([ctlr hideDeleteButtonForRow:1]);
 }
 
+-(void)test_sectionsIsBillSplits {
+    XCTAssertTrue([ctlr sectionIsBillSplits:1]);
+}
+
+
+
 @end

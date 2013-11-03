@@ -21,5 +21,6 @@
 @property (nonatomic) float _totalBillAmount;
 
 -(bool)hideDeleteButtonForRow:(int)rowNumber;
+-(bool)sectionIsBillSplits:(NSInteger)section;
 
 @end

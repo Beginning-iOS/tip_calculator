@@ -20,4 +20,6 @@
 @property (nonatomic) int _tipPercentage;
 @property (nonatomic) float _totalBillAmount;
 
+-(bool)hideDeleteButtonForRow:(int)rowNumber;
+
 @end

@@ -42,4 +42,14 @@
     XCTAssertEqual(15, ctlr._tipPercentage);
 }
 
+-(void)test_hideDeleteButtonIsTrueWhenRowIs_0
+{
+    XCTAssertTrue([ctlr hideDeleteButtonForRow:0]);
+}
+
+-(void)test_hideDeleteButtonIsFalseWhenRowIs_GreaterThan0
+{
+    XCTAssertFalse([ctlr hideDeleteButtonForRow:1]);
+}
+
 @end

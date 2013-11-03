@@ -86,16 +86,25 @@
         tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
         totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
         
-        if (indexPath.row == 0) {
-            // hide delete button
-            UIButton *deleteButton  = (UIButton *)[cell viewWithTag:DELETE_ROW_TAG_NUMBER];
-            [deleteButton setHidden:YES];
+        if ([self hideDeleteButtonForRow:indexPath.row]) {
+            [self hideDeleteButtonForCell:cell];
         }
         return cell;
     }
 
     return nil;
 }
+
+-(void)hideDeleteButtonForCell:(UITableViewCell *)cell {
+    UIButton *deleteButton  = (UIButton *)[cell viewWithTag:DELETE_ROW_TAG_NUMBER];
+    [deleteButton setHidden:YES];
+}
+
+- (bool)hideDeleteButtonForRow:(int)rowNumber
+{
+    return (rowNumber == 0);
+}
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -171,6 +180,7 @@
     
     [(UITableView *)self.view reloadData];
 }
+
 
 
 @end

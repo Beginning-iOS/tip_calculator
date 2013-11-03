@@ -72,20 +72,20 @@
         UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
         UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
 
-        float fBillAmount = (float)[billAmountField.text floatValue];
+        float fBillAmount = _totalBillAmount;
+        fBillAmount = (float)[billAmountField.text floatValue];
+        _totalBillAmount += fBillAmount;
         float fTipAmount = fBillAmount * ((float)_tipPercentage / 100);
 
         tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
         totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     }
-    
-    if (indexPath.row == 0) {
+    else if (indexPath.row == 0) {
         UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
         UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
         tipPercentageLabel.text = [NSString stringWithFormat:@"%d", _tipPercentage];
         [tipSlider setValue:(float)_tipPercentage];
     }
-    
     
     return cell;
 }
@@ -111,6 +111,7 @@
 #pragma mark events
 
 - (IBAction)tipSliderValueChanged:(id)sender {
+    _totalBillAmount = 0.0f;
     UISlider *tipPercentageSlider = (UISlider *)sender;
     _tipPercentage = (int)tipPercentageSlider.value;
 
@@ -119,10 +120,12 @@
 }
 
 - (IBAction)presetTap:(id)sender {
+    _totalBillAmount = 0.0f;
     UIButton *presetButton = (UIButton *)sender;
     _tipPercentage = [presetButton.titleLabel.text intValue];
     [(UITableView *)self.view reloadData];
 }
+
 - (IBAction)addRowTapped:(id)sender {
     _billAmountsCount++;
     int lastRow = [[self tableView] numberOfRowsInSection:0];
@@ -132,6 +135,7 @@
     
     [(UITableView *)self.view reloadData];
 }
+
 - (IBAction)deleteRowTapped:(id)sender {
     _billAmountsCount--;
 
@@ -143,56 +147,5 @@
     [(UITableView *)self.view reloadData];
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

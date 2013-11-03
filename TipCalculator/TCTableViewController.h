@@ -11,6 +11,7 @@
 @interface TCTableViewController : UITableViewController <UITextFieldDelegate> {
     int _billAmountsCount;
     int _tipPercentage;
+    float _totalBillAmount;
 }
 
 @end

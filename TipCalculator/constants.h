@@ -9,7 +9,7 @@
 #ifndef TipCalculator_constants_h
 #define TipCalculator_constants_h
 
-NSString *TOTAL_BILL_SECTION_HEADING = @"Bill Total";
+NSString *TOTAL_BILL_SECTION_HEADING = @"Tip Calculator";
 NSString *BILL_SPLITS_SECTION_HEADING = @"Bill Splits";
 NSString *TIP_CALCULATOR_SECTION_HEADING = @"Tip Percentage";
 

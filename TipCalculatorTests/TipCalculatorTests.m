@@ -31,10 +31,6 @@
     [super tearDown];
 }
 
-- (void)test_defaultValueFor_billAmountsCountIs_1
-{
-    XCTAssertEqual(1, ctlr._billAmountsCount);
-}
 
 -(void)test_defaultTipPercentageIs_15
 {

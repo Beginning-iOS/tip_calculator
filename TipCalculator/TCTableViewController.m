@@ -29,7 +29,6 @@
     [super viewDidLoad];
     self._billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], nil];
     
-    self._billAmountsCount = 1;
     self._tipPercentage = 15;
 }
 
@@ -52,7 +51,7 @@
         return 1;
     }
     
-    return self._billAmountsCount;
+    return [self._billSplits count];
 }
 
 
@@ -192,13 +191,9 @@
     [(UITableView *)self.view reloadData];
 }
 
-- (IBAction)addRowTapped:(id)sender {
-    self._billAmountsCount++;
-    int lastRow = [[self tableView] numberOfRowsInSection:0];
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:1];
-    [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
-                            withRowAnimation:UITableViewRowAnimationTop];
-    
+- (IBAction)addRowTapped:(id)sender
+{
+    [self._billSplits addObject:[NSDecimalNumber zero]];
     [(UITableView *)self.view reloadData];
 }
 
@@ -207,13 +202,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
     int deletedRow = indexPath.row;
     
-    self._billAmountsCount--;
-
-    int lastRow = [[self tableView] numberOfRowsInSection:0];
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow-1 inSection:1];
-    [[self tableView] deleteRowsAtIndexPaths:[NSArray arrayWithObject:ip]
-                            withRowAnimation:UITableViewRowAnimationFade];
-    
+    [self._billSplits removeObjectAtIndex:deletedRow];
     [(UITableView *)self.view reloadData];
 }
 

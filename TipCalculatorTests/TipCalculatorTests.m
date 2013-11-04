@@ -59,6 +59,14 @@
     XCTAssertTrue([ctlr sectionIsTipPercentage:0]);
 }
 
+-(void)test_billSplitsArrayHasOneEntryOnInit {
+    XCTAssertEqual(1, (int)[ctlr._billSplits count]);
+}
+
+-(void)test_billSplitsArrayHasOneEntryOfValue_0_OnInit {
+    XCTAssertEqual((float)0, [[ctlr._billSplits lastObject] floatValue]);
+}
+
 
 
 @end

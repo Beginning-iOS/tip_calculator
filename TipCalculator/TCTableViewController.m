@@ -27,6 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self._billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], nil];
     
     self._billAmountsCount = 1;
     self._tipPercentage = 15;
@@ -195,6 +196,10 @@
 }
 
 - (IBAction)deleteRowTapped:(id)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    int deletedRow = indexPath.row;
+    
     self._billAmountsCount--;
 
     int lastRow = [[self tableView] numberOfRowsInSection:0];

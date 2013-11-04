@@ -87,24 +87,31 @@
 }
 
 -(UITableViewCell *)buildBillSplitCellForTableView:tableView
-                                    WithIndexPath:(NSIndexPath *)indexPath
+                                     WithIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:BILL_AMOUNT_CELL_ID
                                                             forIndexPath:indexPath];
     
-    
+    int tableRow = indexPath.row;
     UITextField *billAmountField  = (UITextField *)[cell viewWithTag:BILL_AMOUNT_TAG_NUMBER];
     UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
     UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
+
+    float fBillAmount;
+    if (self._billSplits[tableRow] == [NSDecimalNumber zero]) {
+        fBillAmount = (self._totalBillAmount / [self._billSplits count]);
+    }
+    else {
+        fBillAmount = [self._billSplits[tableRow] floatValue];
+    }
     
-    float fBillAmount = (self._totalBillAmount / (self._billAmountsCount));
     float fTipAmount = fBillAmount * ((float)self._tipPercentage / 100);
     
     billAmountField.text = [NSString stringWithFormat:@"%.2f", fBillAmount];
     tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
     totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     
-    if ([self hideDeleteButtonForRow:indexPath.row]) {
+    if ([self hideDeleteButtonForRow:tableRow]) {
         [self hideDeleteButtonForCell:cell];
     }
     

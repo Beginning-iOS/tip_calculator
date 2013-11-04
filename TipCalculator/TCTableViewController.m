@@ -163,6 +163,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if ([self sectionIsTotalBill:section]) {
+        return 55.0;
+    }
     return 30.0;
 }
 
@@ -182,11 +185,18 @@
 
  -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 90.0;
+    if ([self sectionIsTotalBill:indexPath.section]) {
+        return 50.0;
+    }
+    else if ([self sectionIsBillSplits:indexPath.section]) {
+        return 50.0;
+    }
+    else if ([self sectionIsTipPercentage:indexPath.section]) {
+        return 75.0;
     }
     
-    return 50.0;
+    return 0.0;
+    
 }
 
 #pragma mark events

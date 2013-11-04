@@ -42,16 +42,22 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if ([self sectionIsTotalBill:section]) {
+        return 1;
+    }
     if ([self sectionIsTipPercentage:section]) {
         return 1;
     }
+    else if ([self sectionIsBillSplits:section]) {
+        return [self._billSplits count];
+    }
     
-    return [self._billSplits count];
+    return 0;
 }
 
 
@@ -59,28 +65,27 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if ([self sectionIsTipPercentage:indexPath.section]) {
-        UITableViewCell *cell = [self buildTipPercentageCellForTableView:tableView WithIndexPath:indexPath];
+    if ([self sectionIsTotalBill:indexPath.section]) {
+        UITableViewCell *cell = [self buildTotalBillCellForTableView:tableView WithIndexPath:indexPath];
         return cell;
     }
     else if ([self sectionIsBillSplits:indexPath.section]) {
         UITableViewCell *cell = [self buildBillSplitCellForTableView:tableView WithIndexPath:indexPath];
         return cell;
     }
+    else if([self sectionIsTipPercentage:indexPath.section]) {
+        UITableViewCell *cell = [self buildTipPercentageCellForTableView:tableView WithIndexPath:indexPath];
+        return cell;
+    }
 
     return nil;
 }
 
--(UITableViewCell *)buildTipPercentageCellForTableView:tableView
+-(UITableViewCell *)buildTotalBillCellForTableView:tableView
                                          WithIndexPath:indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TIP_PERCENTAGE_CELL_ID
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TOTAL_BILL_CELL_ID
                                                             forIndexPath:indexPath];
-    
-    UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
-    UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
-    tipPercentageLabel.text = [NSString stringWithFormat:@"%d", self._tipPercentage];
-    [tipSlider setValue:(float)self._tipPercentage];
 
     return cell;
 }
@@ -117,6 +122,20 @@
     return cell;
 }
 
+-(UITableViewCell *)buildTipPercentageCellForTableView:tableView
+                                         WithIndexPath:indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:TIP_PERCENTAGE_CELL_ID
+                                                            forIndexPath:indexPath];
+    
+    UILabel *tipPercentageLabel = (UILabel *)[cell viewWithTag:TIP_PERCENTAGE_LABEL_TAG_NUMBER];
+    UISlider *tipSlider = (UISlider *)[cell viewWithTag:TIP_PERCENTAGE_SLIDER_TAG_NUMBER];
+    tipPercentageLabel.text = [NSString stringWithFormat:@"%d", self._tipPercentage];
+    [tipSlider setValue:(float)self._tipPercentage];
+    
+    return cell;
+}
+
 -(void)hideDeleteButtonForCell:(UITableViewCell *)cell {
     UIButton *deleteButton  = (UIButton *)[cell viewWithTag:DELETE_ROW_TAG_NUMBER];
     [deleteButton setHidden:YES];
@@ -127,13 +146,18 @@
     return (rowNumber == 0);
 }
 
+-(bool)sectionIsTotalBill:(NSInteger)section
+{
+    return (section == 0);
+}
+
 -(bool)sectionIsBillSplits:(NSInteger)section {
     return (section == 1);
 }
 
 -(bool)sectionIsTipPercentage:(NSInteger)section
 {
-    return (section == 0);
+    return (section == 2);
 }
 
 
@@ -146,10 +170,17 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return nil;
+    if ([self sectionIsTotalBill:section]) {
+        return TOTAL_BILL_SECTION_HEADING;
     }
-    return TIP_CALCULATOR_TABLE_HEADING;
+    else if ([self sectionIsBillSplits:section]) {
+        return BILL_SPLITS_SECTION_HEADING;
+    }
+    else {
+        return TIP_CALCULATOR_SECTION_HEADING;
+    }
+    
+    return @"error";
 }
 
  -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

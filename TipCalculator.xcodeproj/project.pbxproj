@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D5EDB5918288D5B009AF4D7 /* TCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EDB5818288D5B009AF4D7 /* TCNavigationItem.m */; };
 		4DDD407C1825269C003B7CFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407B1825269C003B7CFE /* Foundation.framework */; };
 		4DDD407E1825269C003B7CFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407D1825269C003B7CFE /* CoreGraphics.framework */; };
 		4DDD40801825269C003B7CFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407F1825269C003B7CFE /* UIKit.framework */; };
@@ -35,8 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4D5EDB5718288D5B009AF4D7 /* TCNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNavigationItem.h; sourceTree = "<group>"; };
-		4D5EDB5818288D5B009AF4D7 /* TCNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNavigationItem.m; sourceTree = "<group>"; };
 		4DDD40781825269C003B7CFE /* TipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDD407B1825269C003B7CFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DDD407D1825269C003B7CFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,8 +117,6 @@
 				4DDD408A1825269C003B7CFE /* TCAppDelegate.h */,
 				4DDD408B1825269C003B7CFE /* TCAppDelegate.m */,
 				4DDD408D1825269C003B7CFE /* Main.storyboard */,
-				4D5EDB5718288D5B009AF4D7 /* TCNavigationItem.h */,
-				4D5EDB5818288D5B009AF4D7 /* TCNavigationItem.m */,
 				4DDD40B018252959003B7CFE /* TCTableViewController.h */,
 				4DDD40B118252959003B7CFE /* TCTableViewController.m */,
 				4DDD40931825269C003B7CFE /* Images.xcassets */,
@@ -260,7 +255,6 @@
 				4DDD40B218252959003B7CFE /* TCTableViewController.m in Sources */,
 				4DDD40881825269C003B7CFE /* main.m in Sources */,
 				4DDD408C1825269C003B7CFE /* TCAppDelegate.m in Sources */,
-				4D5EDB5918288D5B009AF4D7 /* TCNavigationItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

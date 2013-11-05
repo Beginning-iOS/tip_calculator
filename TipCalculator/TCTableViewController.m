@@ -123,7 +123,7 @@
     tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
     totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     
-    if ([self hideDeleteButtonForRow:tableRow]) {
+    if ([self hideDeleteButton]) {
         [self hideDeleteButtonForCell:cell];
     }
     
@@ -149,9 +149,10 @@
     [deleteButton setHidden:YES];
 }
 
-- (bool)hideDeleteButtonForRow:(int)rowNumber
+- (bool)hideDeleteButton
 {
-    return (rowNumber == 0);
+    int numRows = [self._billSplits count];
+    return (numRows == 1);
 }
 
 -(bool)sectionIsTotalBill:(NSInteger)section
@@ -207,6 +208,18 @@
     
 }
 
+-(NSMutableArray *) buildCalculatedBillSplits
+{
+    NSMutableArray *returnBillSplits = [[NSMutableArray alloc] initWithCapacity:[self._billSplits count]];
+    float totalBill = self._totalBillAmount;
+    int splitCount = [self._billSplits count];
+    for (NSDecimalNumber *curSplit in self._billSplits) {
+        [returnBillSplits addObject:[[NSDecimalNumber alloc] initWithFloat:(totalBill / splitCount)]];
+    }
+    
+    return returnBillSplits;
+}
+
 #pragma mark events
 
 - (IBAction)tipSliderValueChanged:(id)sender {
@@ -225,6 +238,15 @@
 
 - (IBAction)editTotalBillAmountDidEnd:(id)sender {
     [(UITextField *)sender resignFirstResponder];
+}
+- (IBAction)splitAmountDidEnd:(id)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    int row = indexPath.row;
+    NSLog(@"row: %d", row);
+    
+    UITextField *splitAmountField = (UITextField *)sender;
+    self._billSplits[row] = [NSDecimalNumber decimalNumberWithString:splitAmountField.text];
 }
 
 - (IBAction)CalculateTipTapped:(id)sender {

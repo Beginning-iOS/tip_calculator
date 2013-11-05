@@ -106,6 +106,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
+                                            <connections>
+                                                <action selector="splitAmountDidEnd:" destination="xaV-v2-qzG" eventType="editingDidEnd" id="8KS-dr-ACe"/>
+                                            </connections>
                                         </textField>
                                         <button opaque="NO" tag="105" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7yZ-RQ-Azq">
                                             <rect key="frame" x="20" y="12" width="30" height="30"/>

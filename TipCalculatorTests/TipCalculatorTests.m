@@ -37,22 +37,28 @@
     XCTAssertEqual(15, ctlr._tipPercentage);
 }
 
--(void)test_hideDeleteButtonIsTrueWhenRowIs_0
+-(void)test_hideDeleteButtonRowCountIs_1
 {
-    XCTAssertTrue([ctlr hideDeleteButtonForRow:0]);
+
+    NSMutableArray *billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], nil];
+    ctlr._billSplits = billSplits;
+    XCTAssertTrue([ctlr hideDeleteButton]);
 }
 
--(void)test_hideDeleteButtonIsFalseWhenRowIsGreaterThan_0
+-(void)test_hideDeleteButtonIsFalseWhenRowCountIsGreaterThan_0
 {
-    XCTAssertFalse([ctlr hideDeleteButtonForRow:1]);
+    NSMutableArray *billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], [NSDecimalNumber zero], nil];
+    
+    ctlr._billSplits = billSplits;
+    XCTAssertFalse([ctlr hideDeleteButton]);
 }
 
 -(void)test_sectionsIsBillSplitsIsTrueForSectionIs_1 {
     XCTAssertTrue([ctlr sectionIsBillSplits:1]);
 }
 
--(void)test_sectionsIsTipPercentageIsTrueForSectionIs_0 {
-    XCTAssertTrue([ctlr sectionIsTipPercentage:0]);
+-(void)test_sectionsIsTipPercentageIsTrueForSectionIs_2 {
+    XCTAssertTrue([ctlr sectionIsTipPercentage:2]);
 }
 
 -(void)test_billSplitsArrayHasOneEntryOnInit {
@@ -61,6 +67,23 @@
 
 -(void)test_billSplitsArrayHasOneEntryOfValue_0_OnInit {
     XCTAssertEqual((float)0, [[ctlr._billSplits lastObject] floatValue]);
+}
+
+-(void) test_billSplitAmountIsCalculatedWhenBillSplitAmountIsZero
+{
+    NSMutableArray *billSplits = [[NSMutableArray alloc] initWithObjects:
+                                  [NSDecimalNumber zero],
+                                  [NSDecimalNumber zero],
+                                  nil];
+    
+    ctlr._billSplits = billSplits;
+    ctlr._totalBillAmount = 42.0;
+    
+    NSMutableArray *calculatedBillSplits = [ctlr buildCalculatedBillSplits];
+    float expected = 21.0;
+    float actual = [calculatedBillSplits[0] floatValue];
+    XCTAssertEqual(expected, actual, @"item0 should be 21.0");
+    XCTAssertEqual(21.0, [calculatedBillSplits[1] floatValue], @"item[1] should be 21.0");
 }
 
 

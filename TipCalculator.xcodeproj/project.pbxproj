@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D5EDB5618288AF8009AF4D7 /* TCNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D5EDB5518288AF8009AF4D7 /* TCNavigationController.m */; };
 		4DDD407C1825269C003B7CFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407B1825269C003B7CFE /* Foundation.framework */; };
 		4DDD407E1825269C003B7CFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407D1825269C003B7CFE /* CoreGraphics.framework */; };
 		4DDD40801825269C003B7CFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407F1825269C003B7CFE /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D5EDB5418288AF8009AF4D7 /* TCNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCNavigationController.h; sourceTree = "<group>"; };
+		4D5EDB5518288AF8009AF4D7 /* TCNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCNavigationController.m; sourceTree = "<group>"; };
 		4DDD40781825269C003B7CFE /* TipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDD407B1825269C003B7CFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DDD407D1825269C003B7CFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,9 +120,11 @@
 				4DDD408A1825269C003B7CFE /* TCAppDelegate.h */,
 				4DDD408B1825269C003B7CFE /* TCAppDelegate.m */,
 				4DDD408D1825269C003B7CFE /* Main.storyboard */,
-				4DDD40931825269C003B7CFE /* Images.xcassets */,
+				4D5EDB5418288AF8009AF4D7 /* TCNavigationController.h */,
+				4D5EDB5518288AF8009AF4D7 /* TCNavigationController.m */,
 				4DDD40B018252959003B7CFE /* TCTableViewController.h */,
 				4DDD40B118252959003B7CFE /* TCTableViewController.m */,
+				4DDD40931825269C003B7CFE /* Images.xcassets */,
 				4DDD40821825269C003B7CFE /* Supporting Files */,
 			);
 			path = TipCalculator;
@@ -254,6 +259,7 @@
 			files = (
 				4DDD40B218252959003B7CFE /* TCTableViewController.m in Sources */,
 				4DDD40881825269C003B7CFE /* main.m in Sources */,
+				4D5EDB5618288AF8009AF4D7 /* TCNavigationController.m in Sources */,
 				4DDD408C1825269C003B7CFE /* TCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +469,7 @@
 				4DDD40AC1825269C003B7CFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4DDD40AD1825269C003B7CFE /* Build configuration list for PBXNativeTarget "TipCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +478,7 @@
 				4DDD40AF1825269C003B7CFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

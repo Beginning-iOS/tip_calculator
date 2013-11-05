@@ -33,10 +33,10 @@
     
     [self.navigationItem setTitle:@"Tip Calculator"];
     self.navigationItem.rightBarButtonItem =
-        [[UIBarButtonItem alloc] initWithTitle:@"Add"
-                                         style:UIBarButtonItemStyleBordered
-                                        target:self
-                                        action:@selector(addRowTapped:)];
+    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                  target:self
+                                                  action:@selector(addRowTapped:)];
+    
 }
 
 

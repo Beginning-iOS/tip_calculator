@@ -166,14 +166,14 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if ([self sectionIsTotalBill:section]) {
-        return 55.0;
+        return 0.0;
     }
     return 30.0;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if ([self sectionIsTotalBill:section]) {
-        return TOTAL_BILL_SECTION_HEADING;
+        return nil;
     }
     else if ([self sectionIsBillSplits:section]) {
         return BILL_SPLITS_SECTION_HEADING;

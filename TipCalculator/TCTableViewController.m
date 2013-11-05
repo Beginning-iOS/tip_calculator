@@ -174,7 +174,7 @@
     if ([self sectionIsTotalBill:section]) {
         return 0.0;
     }
-    return 30.0;
+    return 45.0;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

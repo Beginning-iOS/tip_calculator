@@ -20,6 +20,7 @@
 @property (nonatomic) float _totalBillAmount;
 @property (nonatomic, strong) NSMutableArray *_billSplits;
 
+
 -(bool)hideDeleteButtonForRow:(int)rowNumber;
 -(bool)sectionIsBillSplits:(NSInteger)section;
 -(bool)sectionIsTipPercentage:(NSInteger)section;

@@ -27,9 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self._billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], nil];
     
+    self._billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], nil];
     self._tipPercentage = 15;
+    
+    [self.navigationItem setTitle:@"Tip Calculator"];
 }
 
 - (void)didReceiveMemoryWarning

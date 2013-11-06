@@ -124,9 +124,7 @@
 -(NSMutableArray *) buildCalculatedBillSplits
 {
     NSMutableArray *returnBillSplits = [[NSMutableArray alloc] initWithCapacity:[self._billSplits count]];
-    float totalBill = self._totalBillAmount;
-    int splitCount = [self._billSplits count];
-    
+
     int   autosCount = [self buildAutosCount];
     float manualTotal = [self buildManualTotal];
     

@@ -21,7 +21,6 @@
 @property (nonatomic, strong) NSMutableArray *_billSplits;
 
 
--(bool)hideDeleteButton;
 -(bool)sectionIsBillSplits:(NSInteger)section;
 -(bool)sectionIsTipPercentage:(NSInteger)section;
 -(NSMutableArray *)buildCalculatedBillSplits;

@@ -83,9 +83,22 @@
     float expected = 21.0;
     float actual = [calculatedBillSplits[0] floatValue];
     XCTAssertEqual(expected, actual, @"item0 should be 21.0");
-    XCTAssertEqual(21.0, [calculatedBillSplits[1] floatValue], @"item[1] should be 21.0");
+    XCTAssertEqual((float)21.0, [calculatedBillSplits[1] floatValue], @"item[1] should be 21.0");
 }
 
+-(void) test_billSplitAmountIsNotCalculatedWhenBillSplitAmountIsGreaternThanZero
+{
+    NSMutableArray *billSplits = [[NSMutableArray alloc] initWithObjects:
+                                  [[NSDecimalNumber alloc] initWithInt:22],
+                                  [[NSDecimalNumber alloc] initWithInt:20],
+                                  nil];
+    
+    ctlr._billSplits = billSplits;
+    ctlr._totalBillAmount = 42.0;
+    
+    NSMutableArray *calculatedBillSplits = [ctlr buildCalculatedBillSplits];
+    XCTAssertEqual((float)22.0, [calculatedBillSplits[0] floatValue], @"item0 should be 22.0");
+}
 
 
 @end

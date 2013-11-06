@@ -214,7 +214,13 @@
     float totalBill = self._totalBillAmount;
     int splitCount = [self._billSplits count];
     for (NSDecimalNumber *curSplit in self._billSplits) {
-        [returnBillSplits addObject:[[NSDecimalNumber alloc] initWithFloat:(totalBill / splitCount)]];
+        if (curSplit > 0) {
+            [returnBillSplits addObject:curSplit];
+        }
+        else {
+        [returnBillSplits addObject:[[NSDecimalNumber alloc]
+                                     initWithFloat:(totalBill / splitCount)]];
+        }
     }
     
     return returnBillSplits;

@@ -118,10 +118,6 @@
     tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
     totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     
-    if ([self hideDeleteButton]) {
-        [self hideDeleteButtonForCell:cell];
-    }
-    
     return cell;
 }
 
@@ -137,17 +133,6 @@
     [tipSlider setValue:(float)self._tipPercentage];
     
     return cell;
-}
-
--(void)hideDeleteButtonForCell:(UITableViewCell *)cell {
-    UIButton *deleteButton  = (UIButton *)[cell viewWithTag:DELETE_ROW_TAG_NUMBER];
-    [deleteButton setHidden:YES];
-}
-
-- (bool)hideDeleteButton
-{
-    int numRows = [self._billSplits count];
-    return (numRows == 1);
 }
 
 -(bool)sectionIsTotalBill:(NSInteger)section

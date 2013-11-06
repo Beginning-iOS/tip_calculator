@@ -280,7 +280,6 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
     int row = indexPath.row;
-    NSLog(@"row: %d", row);
     
     UITextField *splitAmountField = (UITextField *)sender;
     self._billSplits[row] = [NSDecimalNumber decimalNumberWithString:splitAmountField.text];

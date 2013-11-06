@@ -109,13 +109,8 @@
     UITextField *tipAmountField   = (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
     UITextField *totalAmountField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
 
-    float fBillAmount;
-    if (self._billSplits[tableRow] == [NSDecimalNumber zero]) {
-        fBillAmount = (self._totalBillAmount / [self._billSplits count]);
-    }
-    else {
-        fBillAmount = [self._billSplits[tableRow] floatValue];
-    }
+    NSMutableArray *calculatedBillSplits = [self buildCalculatedBillSplits];
+    float fBillAmount = [calculatedBillSplits[tableRow] floatValue];
     
     float fTipAmount = fBillAmount * ((float)self._tipPercentage / 100);
     
@@ -214,12 +209,12 @@
     float totalBill = self._totalBillAmount;
     int splitCount = [self._billSplits count];
     for (NSDecimalNumber *curSplit in self._billSplits) {
-        if (curSplit > 0) {
-            [returnBillSplits addObject:curSplit];
+        if (curSplit == [NSDecimalNumber zero]) {
+            [returnBillSplits addObject:[[NSDecimalNumber alloc]
+                                         initWithFloat:(totalBill / splitCount)]];
         }
         else {
-        [returnBillSplits addObject:[[NSDecimalNumber alloc]
-                                     initWithFloat:(totalBill / splitCount)]];
+            [returnBillSplits addObject:curSplit];
         }
     }
     

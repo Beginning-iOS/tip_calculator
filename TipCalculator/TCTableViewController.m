@@ -121,6 +121,54 @@
     return cell;
 }
 
+-(NSMutableArray *) buildCalculatedBillSplits
+{
+    NSMutableArray *returnBillSplits = [[NSMutableArray alloc] initWithCapacity:[self._billSplits count]];
+    float totalBill = self._totalBillAmount;
+    int splitCount = [self._billSplits count];
+    
+    int   autosCount = [self buildAutosCount];
+    float manualTotal = [self buildManualTotal];
+    
+    for (NSDecimalNumber *curSplit in self._billSplits) {
+        if (curSplit == [NSDecimalNumber zero]) {
+            
+            [returnBillSplits addObject:[[NSDecimalNumber alloc]
+                                         initWithFloat:((self._totalBillAmount - manualTotal) / autosCount)]];
+        }
+        else {
+            [returnBillSplits addObject:curSplit];
+        }
+    }
+    
+    return returnBillSplits;
+}
+
+-(int)buildAutosCount
+{
+    int returnCount = 0;
+    for (NSDecimalNumber *curSplit in self._billSplits) {
+        if (curSplit == [NSDecimalNumber zero]) {
+            returnCount++;
+        }
+    }
+    
+    return returnCount;
+}
+
+-(float)buildManualTotal
+{
+    float manualTotal = 0.0;
+    for (NSDecimalNumber *curSplit in self._billSplits) {
+        if (curSplit != [NSDecimalNumber zero]) {
+            manualTotal += [curSplit floatValue];
+        }
+    }
+    
+    return manualTotal;
+}
+
+
 -(UITableViewCell *)buildTipPercentageCellForTableView:tableView
                                          WithIndexPath:indexPath
 {
@@ -186,24 +234,6 @@
     
     return 0.0;
     
-}
-
--(NSMutableArray *) buildCalculatedBillSplits
-{
-    NSMutableArray *returnBillSplits = [[NSMutableArray alloc] initWithCapacity:[self._billSplits count]];
-    float totalBill = self._totalBillAmount;
-    int splitCount = [self._billSplits count];
-    for (NSDecimalNumber *curSplit in self._billSplits) {
-        if (curSplit == [NSDecimalNumber zero]) {
-            [returnBillSplits addObject:[[NSDecimalNumber alloc]
-                                         initWithFloat:(totalBill / splitCount)]];
-        }
-        else {
-            [returnBillSplits addObject:curSplit];
-        }
-    }
-    
-    return returnBillSplits;
 }
 
 #pragma mark events

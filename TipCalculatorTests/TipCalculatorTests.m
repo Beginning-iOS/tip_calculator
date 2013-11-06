@@ -100,5 +100,20 @@
     XCTAssertEqual((float)22.0, [calculatedBillSplits[0] floatValue], @"item0 should be 22.0");
 }
 
+-(void) test_billSplitAmountTotalsAddUpToTotalBillAmount
+{
+    NSMutableArray *billSplits = [[NSMutableArray alloc] initWithObjects:
+                                  [NSDecimalNumber zero],
+                                  [[NSDecimalNumber alloc] initWithInt:20],
+                                  [NSDecimalNumber zero],
+                                  nil];
+    
+    ctlr._billSplits = billSplits;
+    ctlr._totalBillAmount = 42.0;
+    
+    NSMutableArray *calculatedBillSplits = [ctlr buildCalculatedBillSplits];
+    XCTAssertEqual((float)11.0, [calculatedBillSplits[0] floatValue]);
+}
+
 
 @end

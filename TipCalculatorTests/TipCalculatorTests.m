@@ -37,21 +37,6 @@
     XCTAssertEqual(15, ctlr._tipPercentage);
 }
 
--(void)test_hideDeleteButtonRowCountIs_1
-{
-
-    NSMutableArray *billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], nil];
-    ctlr._billSplits = billSplits;
-    XCTAssertTrue([ctlr hideDeleteButton]);
-}
-
--(void)test_hideDeleteButtonIsFalseWhenRowCountIsGreaterThan_0
-{
-    NSMutableArray *billSplits = [[NSMutableArray alloc] initWithObjects:[NSDecimalNumber zero], [NSDecimalNumber zero], nil];
-    
-    ctlr._billSplits = billSplits;
-    XCTAssertFalse([ctlr hideDeleteButton]);
-}
 
 -(void)test_sectionsIsBillSplitsIsTrueForSectionIs_1 {
     XCTAssertTrue([ctlr sectionIsBillSplits:1]);

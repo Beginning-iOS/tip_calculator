@@ -219,6 +219,36 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 }
 
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if ([self sectionIsBillSplits:section]) {
+        UIView *headerView =
+                [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 45.0)];
+        headerView.backgroundColor = [UIColor lightGrayColor];
+
+        CGRect buttonFrame = CGRectMake(0.0f, 0.0f, headerView.frame.size.width, 45.0f);
+        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        [addButton addTarget:self
+                      action:@selector(addRowTapped:)
+            forControlEvents:UIControlEventTouchUpInside];
+        [addButton setTitle:@"Add" forState:UIControlStateNormal];
+        addButton.frame = buttonFrame;
+        [headerView addSubview:addButton];
+        
+        /*
+        CGRect labelFrame = CGRectMake(0.0f, 0.0f, headerView.frame.size.width, 45.0f);
+        UILabel *foo = [[UILabel alloc] initWithFrame:labelFrame];
+        foo.text = @"eddie would go";
+        foo.font = [UIFont boldSystemFontOfSize:14.0f];
+        //foo.center = tableView.center;
+        [headerView addSubview:foo];
+         */
+        
+        return headerView;
+    }
+    return nil;
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if ([self sectionIsTotalBill:section]) {
@@ -231,9 +261,9 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     if ([self sectionIsTotalBill:section]) {
         return nil;
     }
-    else if ([self sectionIsBillSplits:section]) {
+/*    else if ([self sectionIsBillSplits:section]) {
         return BILL_SPLITS_SECTION_HEADING;
-    }
+    } */
     else {
         return TIP_CALCULATOR_SECTION_HEADING;
     }
@@ -254,7 +284,6 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     }
     
     return 0.0;
-    
 }
 
 #pragma mark events

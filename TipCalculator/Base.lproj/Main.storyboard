@@ -178,7 +178,7 @@
                             <outlet property="delegate" destination="xaV-v2-qzG" id="tJV-n4-CSD"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aII-ny-gQb" customClass="TCNavigationItem"/>
+                    <navigationItem key="navigationItem" id="aII-ny-gQb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWW-gI-E5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

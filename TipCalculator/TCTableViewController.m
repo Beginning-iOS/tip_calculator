@@ -221,12 +221,15 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    if ([self sectionIsBillSplits:section]) {
-        UIView *headerView =
-                [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 45.0)];
-        headerView.backgroundColor = [UIColor lightGrayColor];
+    UIView *headerView =
+    [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 45.0)];
+    headerView.backgroundColor = [UIColor lightGrayColor];
 
-        CGRect buttonFrame = CGRectMake(0.0f, 0.0f, headerView.frame.size.width, 45.0f);
+    if ([self sectionIsBillSplits:section]) {
+
+        float frameWidth = headerView.frame.size.width;
+        float buttonWidth = 30.0f;
+        CGRect buttonFrame = CGRectMake(frameWidth - buttonWidth-20, 0.0f, buttonWidth, 45.0f);
         UIButton *addButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [addButton addTarget:self
                       action:@selector(addRowTapped:)
@@ -235,14 +238,21 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         addButton.frame = buttonFrame;
         [headerView addSubview:addButton];
         
-        /*
-        CGRect labelFrame = CGRectMake(0.0f, 0.0f, headerView.frame.size.width, 45.0f);
-        UILabel *foo = [[UILabel alloc] initWithFrame:labelFrame];
-        foo.text = @"eddie would go";
-        foo.font = [UIFont boldSystemFontOfSize:14.0f];
-        //foo.center = tableView.center;
-        [headerView addSubview:foo];
-         */
+        CGRect labelFrame = CGRectMake(20.0f, 0.0f, headerView.frame.size.width, 45.0f);
+        UILabel *headerLabel = [[UILabel alloc] initWithFrame:labelFrame];
+        headerLabel.text = @"Bill Splits";
+        headerLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+        [headerView addSubview:headerLabel];
+        
+        return headerView;
+    }
+    if ([self sectionIsTipPercentage:section]) {
+
+        CGRect labelFrame = CGRectMake(20.0f, 0.0f, headerView.frame.size.width, 45.0f);
+        UILabel *headerLabel = [[UILabel alloc] initWithFrame:labelFrame];
+        headerLabel.text = @"Tip Percentage";
+        headerLabel.font = [UIFont boldSystemFontOfSize:14.0f];
+        [headerView addSubview:headerLabel];
         
         return headerView;
     }

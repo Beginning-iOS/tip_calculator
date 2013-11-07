@@ -319,6 +319,16 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     return 0.0;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"BillSplitDetailSegue"]) {
+        NSLog(@"segue to BillSplitDetailSegue");
+    }
+    else {
+        NSLog(@"segue.identifier: [%@]", segue.identifier);
+    }
+}
+
 #pragma mark events
 
 -(IBAction)detailTapped:(id)sender {

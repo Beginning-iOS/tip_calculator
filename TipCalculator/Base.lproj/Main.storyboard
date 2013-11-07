@@ -117,7 +117,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <segue destination="fa2-LM-nJ8" kind="push" id="Gum-Uf-k36"/>
+                                                <segue destination="fa2-LM-nJ8" kind="push" identifier="BillSplitDetailSegue" id="Gum-Uf-k36"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -194,10 +194,10 @@
             </objects>
             <point key="canvasLocation" x="-22" y="-743"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="N1l-fb-YMp">
             <objects>
-                <viewController id="fa2-LM-nJ8" sceneMemberID="viewController">
+                <viewController id="fa2-LM-nJ8" customClass="TCDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mih-zw-H0v"/>
                         <viewControllerLayoutGuide type="bottom" id="OBq-as-aog"/>

@@ -145,7 +145,8 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         billAmountField.layer.borderColor = [[UIColor blackColor]CGColor];
         billAmountField.layer.borderWidth = 1.0;
     }
-    
+
+    /*
     UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeSystem];
     detailButton.frame = CGRectMake(0.0f, 0.0f, 20.0f, 25.0f);
     [detailButton setTitle:@">" forState:UIControlStateNormal];
@@ -153,7 +154,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
                      action:@selector(detailTapped:)
            forControlEvents:UIControlEventTouchUpInside];
     cell.accessoryView = detailButton;
-
+     */
     
     return cell;
 }

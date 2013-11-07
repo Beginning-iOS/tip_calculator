@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4D5EDB5B1828978A009AF4D7 /* button_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D5EDB5A1828978A009AF4D7 /* button_delete.png */; };
-		4DA6E380182B0075006A4C1D /* BillSplitsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA6E37F182B0075006A4C1D /* BillSplitsHeader.xib */; };
 		4DDD407C1825269C003B7CFE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407B1825269C003B7CFE /* Foundation.framework */; };
 		4DDD407E1825269C003B7CFE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407D1825269C003B7CFE /* CoreGraphics.framework */; };
 		4DDD40801825269C003B7CFE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DDD407F1825269C003B7CFE /* UIKit.framework */; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		4D5EDB5A1828978A009AF4D7 /* button_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_delete.png; path = TipCalculator/button_delete.png; sourceTree = "<group>"; };
-		4DA6E37F182B0075006A4C1D /* BillSplitsHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BillSplitsHeader.xib; sourceTree = "<group>"; };
 		4DDD40781825269C003B7CFE /* TipCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TipCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDD407B1825269C003B7CFE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DDD407D1825269C003B7CFE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,7 +124,6 @@
 				4DDD40B118252959003B7CFE /* TCTableViewController.m */,
 				4DDD40931825269C003B7CFE /* Images.xcassets */,
 				4DDD40821825269C003B7CFE /* Supporting Files */,
-				4DA6E37F182B0075006A4C1D /* BillSplitsHeader.xib */,
 			);
 			path = TipCalculator;
 			sourceTree = "<group>";
@@ -240,7 +237,6 @@
 				4DDD40941825269C003B7CFE /* Images.xcassets in Resources */,
 				4DDD40861825269C003B7CFE /* InfoPlist.strings in Resources */,
 				4D5EDB5B1828978A009AF4D7 /* button_delete.png in Resources */,
-				4DA6E380182B0075006A4C1D /* BillSplitsHeader.xib in Resources */,
 				4DDD408F1825269C003B7CFE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

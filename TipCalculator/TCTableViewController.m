@@ -214,6 +214,14 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     return (section == 2);
 }
 
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView =
+    [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 30.0)];
+    footerView.backgroundColor = [UIColor clearColor];
+    
+    return footerView;
+}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

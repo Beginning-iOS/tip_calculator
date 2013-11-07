@@ -219,7 +219,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 {
     UIView *headerView =
     [[UIView alloc]initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, 45.0)];
-    headerView.backgroundColor = [UIColor lightGrayColor];
+    headerView.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
     if ([self sectionIsBillSplits:section]) {
 

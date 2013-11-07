@@ -32,10 +32,6 @@
     self._tipPercentage = 15;
     
     [self.navigationItem setTitle:@"Tip Calculator"];
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                  target:self
-                                                  action:@selector(addRowTapped:)];
     
 }
 

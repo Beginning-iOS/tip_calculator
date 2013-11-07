@@ -137,6 +137,16 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     tipAmountField.text = [NSString stringWithFormat:@"%.2f", fTipAmount];
     totalAmountField.text = [NSString stringWithFormat:@"%.2f", (fBillAmount + fTipAmount)];
     
+    if (self._billSplits[tableRow] == [NSDecimalNumber zero]) {
+        billAmountField.layer.borderColor = [[UIColor clearColor]CGColor];
+        billAmountField.layer.borderWidth = 0.0;
+    }
+    else {
+        billAmountField.layer.borderColor = [[UIColor blackColor]CGColor];
+        billAmountField.layer.borderWidth = 1.0;
+    }
+
+    
     return cell;
 }
 

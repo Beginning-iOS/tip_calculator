@@ -325,7 +325,12 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     int row = indexPath.row;
     
     UITextField *splitAmountField = (UITextField *)sender;
-    self._billSplits[row] = [NSDecimalNumber decimalNumberWithString:splitAmountField.text];
+    if ([splitAmountField.text intValue] == 0) {
+        self._billSplits[row] = [NSDecimalNumber zero];
+    }
+    else {
+        self._billSplits[row] = [NSDecimalNumber decimalNumberWithString:splitAmountField.text];
+    }
 }
 
 - (IBAction)CalculateTipTapped:(id)sender {

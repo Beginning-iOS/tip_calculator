@@ -45,5 +45,11 @@
 -(void)foo:(NSString *)s {
     NSLog(@"%@",s);
 }
+- (IBAction)tipBumpUpTapped:(id)sender {
+    NSLog(@"tip: [%@]", self.tip);
+}
+
+
+
 
 @end

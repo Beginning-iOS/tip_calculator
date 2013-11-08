@@ -45,7 +45,10 @@
 -(signed char)tableView:(UITableView *)tableView
   canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return UITableViewCellEditingStyleDelete;
+    if ([self sectionIsBillSplits:indexPath.section]) {
+        return UITableViewCellEditingStyleDelete;
+    }
+    return UITableViewCellEditingStyleNone;
 }
 
 -(void) setEditing:(BOOL)editing animated:(BOOL)animated

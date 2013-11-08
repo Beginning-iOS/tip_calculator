@@ -10,9 +10,12 @@
 
 @interface TCDetailViewController ()
 
+
 @end
 
+
 @implementation TCDetailViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,12 +30,20 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.billLabel.text = self.bill;
+    self.tipLabel.text = self.tip;
+    self.totalLabel.text = self.total;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)foo:(NSString *)s {
+    NSLog(@"%@",s);
 }
 
 @end

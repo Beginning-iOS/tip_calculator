@@ -19,6 +19,7 @@
 @property (nonatomic) int _tipPercentage;
 @property (nonatomic) float _totalBillAmount;
 @property (nonatomic, strong) NSMutableArray *_billSplits;
+@property (nonatomic) NSIndexPath *_selectedIndexPath;
 
 
 -(bool)sectionIsBillSplits:(NSInteger)section;

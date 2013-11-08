@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Mark Haskamp. All rights reserved.
 //
 
-#import "TCTableViewController.h"
 #import "constants.h"
-
+#import "TCTableViewController.h"
+#import "TCDetailViewController.h"
 
 @interface TCTableViewController ()
 
@@ -321,13 +321,27 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSLog(@"segue.identifier: [%@]", segue.identifier);
     if([segue.identifier isEqualToString:@"BillSplitDetailSegue"]) {
-        NSLog(@"segue to BillSplitDetailSegue");
-    }
-    else {
-        NSLog(@"segue.identifier: [%@]", segue.identifier);
+        CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+        NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+        int row = indexPath.row;
+
+        UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
+        UITextField *tipField  =  (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
+        UITextField *totalField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
+
+        
+        NSMutableArray *calcBillSplits = [self buildCalculatedBillSplits];
+        
+        TCDetailViewController *destCtlr = (TCDetailViewController *)segue.destinationViewController;
+        
+        destCtlr.bill =  [NSString stringWithFormat:@"%.2f", [calcBillSplits[row] floatValue]];
+        destCtlr.tip = tipField.text;
+        destCtlr.total = totalField.text;
     }
 }
+
 
 #pragma mark events
 

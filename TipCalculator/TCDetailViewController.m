@@ -31,9 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.billLabel.text = [NSString stringWithFormat:@"%.2f", self.bill];
-    self.tipLabel.text =  [NSString stringWithFormat:@"%.2f", self.tip];
-    self.totalLabel.text = [NSString stringWithFormat:@"%.2f", self.total];
+    [self paintLabels];
 }
 
 - (void)didReceiveMemoryWarning
@@ -79,8 +77,10 @@
 
 -(void)paintLabels
 {
+    self.billLabel.text = [NSString stringWithFormat:@"%.2f", self.bill];
     self.totalLabel.text = [NSString stringWithFormat:@"%.2f", self.total];
     self.tipLabel.text = [NSString stringWithFormat:@"%.2f", self.tip];
+    self.percentageLabel.text = [NSString stringWithFormat:@"%.2f", (100 *(self.tip / self.bill))];
 }
 
 

@@ -268,7 +268,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l78-QC-spf">
-                                <rect key="frame" x="134" y="107" width="42" height="21"/>
+                                <rect key="frame" x="97" y="107" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
@@ -285,6 +285,7 @@
                     <navigationItem key="navigationItem" id="zkE-EU-lPS"/>
                     <connections>
                         <outlet property="billLabel" destination="wKD-2J-MD0" id="8Vi-BY-CPj"/>
+                        <outlet property="percentageLabel" destination="l78-QC-spf" id="Wcs-hC-apO"/>
                         <outlet property="tipLabel" destination="3qJ-wr-b0J" id="2ae-vS-dbh"/>
                         <outlet property="totalLabel" destination="Xma-zS-woA" id="be5-nB-Cea"/>
                     </connections>

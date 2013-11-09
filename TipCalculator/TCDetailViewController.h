@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
 @property (weak, nonatomic) IBOutlet UILabel *totalLabel;
 
+-(float)bumpDown:(float)f;
+
 @end

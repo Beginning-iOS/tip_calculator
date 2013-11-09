@@ -8,6 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "TCTableViewController.h"
+#import "TCDetailViewController.h"
+
 
 @interface TipCalculatorTests : XCTestCase
 
@@ -15,6 +17,7 @@
 
 @implementation TipCalculatorTests {
     TCTableViewController *ctlr;
+    TCDetailViewController *detailCtlr;
 }
 
 - (void)setUp
@@ -23,6 +26,9 @@
 
     ctlr = [[TCTableViewController alloc] initWithNibName:@"TCTableViewController" bundle:nil];
     [ctlr viewDidLoad];
+    
+    detailCtlr = [[TCDetailViewController alloc] initWithNibName:@"TCDetailViewController" bundle:nil];
+    [detailCtlr viewDidLoad];
 }
 
 - (void)tearDown
@@ -98,6 +104,16 @@
     
     NSMutableArray *calculatedBillSplits = [ctlr buildCalculatedBillSplits];
     XCTAssertEqual((float)11.0, [calculatedBillSplits[0] floatValue]);
+}
+
+-(void) test_bumpDownReturnsValueToClosest_25
+{
+    XCTAssertEqual((float)2.50, [detailCtlr bumpDown:2.65]);
+}
+
+-(void) test_bumpDownReturnsValueToNext_25
+{
+    XCTAssertEqual((float)2.50, [detailCtlr bumpDown:2.75]);
 }
 
 

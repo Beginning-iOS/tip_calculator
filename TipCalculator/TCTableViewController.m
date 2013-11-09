@@ -324,7 +324,6 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"segue.identifier: [%@]", segue.identifier);
     if([segue.identifier isEqualToString:@"BillSplitDetailSegue"]) {
         CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
@@ -333,15 +332,14 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
         UITableViewCell *cell = [[self tableView] cellForRowAtIndexPath:indexPath];
         UITextField *tipField  =  (UITextField *)[cell viewWithTag:TIP_AMOUNT_TAG_NUMBER];
         UITextField *totalField = (UITextField *)[cell viewWithTag:TOTAL_AMOUNT_TAG_NUMBER];
-
         
         NSMutableArray *calcBillSplits = [self buildCalculatedBillSplits];
         
         TCDetailViewController *destCtlr = (TCDetailViewController *)segue.destinationViewController;
         
-        destCtlr.bill =  [NSString stringWithFormat:@"%.2f", [calcBillSplits[row] floatValue]];
-        destCtlr.tip = tipField.text;
-        destCtlr.total = totalField.text;
+        destCtlr.bill =  [calcBillSplits[row] floatValue];
+        destCtlr.tip = [tipField.text floatValue];
+        destCtlr.total = [totalField.text floatValue];
     }
 }
 

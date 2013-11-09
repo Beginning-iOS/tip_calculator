@@ -31,9 +31,9 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.billLabel.text = self.bill;
-    self.tipLabel.text = self.tip;
-    self.totalLabel.text = self.total;
+    self.billLabel.text = [NSString stringWithFormat:@"%.2f", self.bill];
+    self.tipLabel.text =  [NSString stringWithFormat:@"%.2f", self.tip];
+    self.totalLabel.text = [NSString stringWithFormat:@"%.2f", self.total];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,33 +42,47 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)foo:(NSString *)s {
-    NSLog(@"%@",s);
-}
-
 - (IBAction)tipBumpUpTapped:(id)sender {
-    float f = [self bumpUp:[self.tip floatValue]];
-    self.tip = [NSString stringWithFormat:@"%.2f", f];
-    self.tipLabel.text = [NSString stringWithFormat:@"%.2f", f];
+    float f = [self bumpUp:self.tip];
+    
+    self.total = self.total + (f - self.tip);
+    self.tip = f;
+
+    [self paintLabels];
 }
 
 - (IBAction)tipBumpDownTapped:(id)sender {
-    float f = [self bumpDown:[self.tip floatValue]];
-    self.tip = [NSString stringWithFormat:@"%.2f", f];
-    self.tipLabel.text = [NSString stringWithFormat:@"%.2f", f];
+    float f = [self bumpDown:self.tip];
+    
+    self.total = self.total - (self.tip - f);
+    self.tip = f;
+
+    [self paintLabels];
 }
 
 - (IBAction)totalBumpDownTapped:(id)sender {
-    float f = [self bumpDown:[self.total floatValue]];
-    self.total = [NSString stringWithFormat:@"%.2f", f];
-    self.totalLabel.text = [NSString stringWithFormat:@"%.2f", f];
+    float f = [self bumpDown:self.total];
+    
+    self.tip = self.tip - (self.total - f);
+    self.total = f;
+
+    [self paintLabels];
 }
 
 - (IBAction)totalBumpUpTapped:(id)sender {
-    float f = [self bumpUp:[self.total floatValue]];
-    self.total = [NSString stringWithFormat:@"%.2f", f];
-    self.totalLabel.text = [NSString stringWithFormat:@"%.2f", f];
+    float f = [self bumpUp:self.total];
+    self.tip = self.tip + (f - self.total);
+    self.total = f;
+
+    [self paintLabels];
 }
+
+-(void)paintLabels
+{
+    self.totalLabel.text = [NSString stringWithFormat:@"%.2f", self.total];
+    self.tipLabel.text = [NSString stringWithFormat:@"%.2f", self.tip];
+}
+
 
 -(float)bumpDown:(float)f {
     float newF = f - 0.01;

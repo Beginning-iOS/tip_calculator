@@ -10,9 +10,9 @@
 
 @interface TCDetailViewController : UIViewController
 
-@property(strong, nonatomic) NSString *bill;
-@property(strong, nonatomic) NSString *tip;
-@property(strong, nonatomic) NSString *total;
+@property(nonatomic) float bill;
+@property(nonatomic) float tip;
+@property(nonatomic) float total;
 
 @property (weak, nonatomic) IBOutlet UILabel *billLabel;
 @property (weak, nonatomic) IBOutlet UILabel *tipLabel;
